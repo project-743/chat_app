@@ -1,2 +1,2 @@
-# mern_chat_app
+# CHAT APPLICATION
 Chat application created with MERN stack.
