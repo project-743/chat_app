@@ -1,6 +1,9 @@
-.APP{
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+.App{
+    display: flex;
+    min-height: 100vh;
+    /* background-image: url('./car.gif'); */
+    background-color:#1DA1F2;
+    background-position: center;
+    background-size: cover; 
 }

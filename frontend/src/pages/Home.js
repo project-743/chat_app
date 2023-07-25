@@ -1,38 +1,50 @@
 import React from "react";
 import './Home.css';
+import { Container,Box,Text ,Tabs,Tab,TabList,TabPanel,TabPanels} from '@chakra-ui/react'
+import Login from "../compnents/authentication/login";
+import Signup from "../compnents/authentication/Signup";
 const Home = () => {
-  const externalImage='./background.jpg';
+  
   return (
-    <div style={{height: '100vh'}}>
-        <div className="first" >
-              <ul class="nav nav-pills">
-              <li class="nav-item pills_mar">
-                <a class="nav-link btn btn-secondary btn-lg active " aria-current="page" href="#">LOGIN</a>
-              </li>
-              <li class="nav-item pills_mar">
-                <a class="nav-link btn btn-secondary btn-lg active " href="#">REGISTER</a>
-              </li>
-            </ul>
-            <form>
-            <div class="form-group enter">
-              <label for="exampleInputEmail1" >Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
-            </div>
-            <div class="form-group enter">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
-            </div>
-            <div class="form-check enter">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-        </div>
-        
-        {/* <div className="second" ></div> */}
-    </div>
+   
+         <Container  maxW="xl" centerContent>
+                <Box
+                d="flex"
+                justifyContesnt="center"
+                p={3}
+                bg={"white"}
+                w="100%"
+                m="40px 0 15px 0"
+                borderRadius="lg"
+                borderWidth="1px"
+                >
+                <Text fontSize="4xl" fontFamily="Work sans" color="black"> chat_app</Text>  
+                </Box>
+                <Box
+                p={4}
+                bg="white"
+                w="100%"
+                borderRadius="lg"
+                borderWidth="1px"
+                >
+                <Tabs variant='soft-rounded' color="black" >
+                    <TabList m="5px 5px 5px 5px">
+                      <Tab w="50%">login</Tab>
+                      <Tab w="50%">sign_up</Tab>
+                    </TabList>
+                    <TabPanels>
+                      <TabPanel>
+                        <Login></Login>
+                      </TabPanel>
+                      <TabPanel>
+                        <Signup/>
+                      </TabPanel>
+                    </TabPanels>
+                </Tabs>
+                </Box>
+            </Container>
+    
+   
   );
 };
-
 export default Home;
