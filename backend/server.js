@@ -2,22 +2,16 @@ const express = require("express");
 const dotenv = require("dotenv");
 const { chats } = require("./data/data");
 const connect=require('./config/db.js');
+const userRoutes=require('./routes/userRoutes');
 const app = express();
 dotenv.config();
 connect();
+app.use(express.json());
 app.get("/", (req, res) => {
   res.send("API IS RUNNING");
 });
 
-app.get("/api/chat", (req, res) => {
-  res.send(chats);
-});
-
-app.get("/api/chat/:id", (req, res) => {
-  //req.params.id will have the id
-  const singleChat = chats.find((c) => c._id === req.params.id);
-  res.send(singleChat);
-});
+app.use('/api/user',userRoutes);
 
 const PORT = process.env.PORT || 5000;
 
