@@ -1,12 +1,52 @@
 
 import { VStack,FormControl,Input,FormLabel,InputRightElement,Button, InputGroup} from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { useToast } from '@chakra-ui/react';
+import axios from 'axios';
+
 const Login = () => {
   const [email,setEmail]=useState();
-  const [password,setPassword]=useState();
+  const [pass,setPassword]=useState();
   const [show,setshow]=useState(false);
   const handleClick=()=>{setshow(!show)};
-  const submitHandler=()=>{};
+  const toast=useToast();
+  const submitHandler=async ()=>{
+    if(!email || !pass ){
+                toast({
+                    title: 'please enter all the details',
+                    status: 'warning',
+                    duration: 5000,
+                    isClosable: true,
+                    position:"bottom"
+                  })
+                  return ;
+       }
+       try{
+            const config={
+                headers:{"content-type":"application/json"}
+            };
+            const {data}= await axios.post("/api/user/login",{email,pass},config);
+            console.log(data);
+            localStorage.setItem('userInfo',JSON.stringify(data));
+       }catch{
+            console.error();
+            toast({
+                title: 'signed up unsuccessfull',
+                status: 'warning',
+                duration: 5000,
+                isClosable: true,
+                position:"bottom"
+            })
+          return ;
+       }
+       toast({
+        title: 'sucessfull',
+        status: 'warning',
+        duration: 5000,
+        isClosable: true,
+        position:"bottom"
+    })
+  };
   return (
     <VStack spacing="5px">
     <FormControl id="email" isRequired >
